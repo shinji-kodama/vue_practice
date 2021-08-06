@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+    app:
+      build: ./
+      working_dir: /app
+      tty: true
+      volumes:
+        - ./:/app
+      ports:
+        - 80:3000
