@@ -13,7 +13,7 @@
     </div>
   <div class="container">
       <ul class="category-list">
-          <li v-for="(image, index) in filterByCategory">
+          <li v-for="(image, index) in images">
               <img :src="image.src" alt="">
           </li>
       </ul>
@@ -106,7 +106,7 @@ export default {
     };
   },
   computed: {
-    // ...mapState(["picsInfo"]),
+    ...mapState(["picsInfo",'images']),
     filterByCategory(){
         return this.images.filter( (image) => !image.category.indexOf(this.category))
     }
