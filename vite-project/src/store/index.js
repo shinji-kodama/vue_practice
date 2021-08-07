@@ -7,17 +7,17 @@ const store = createStore({
           {
             title:'hoge',
             text:'hoge_text',
-            img:'hoge_pics',
+            img: '../assets/topmain.jpeg',
           },
           {
             title:'foo',
             text:'foo_text',
-            img:'foo_pics',
+            img:'./assets/topmain.jpeg',
           },
           {
             title:'bar',
             text:'bar_text',
-            img:'bar_pics',
+            img:'./assets/topmain.jpeg',
           },
       ],
       hoge:'Hogeeeee!',

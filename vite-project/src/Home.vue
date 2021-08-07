@@ -1,7 +1,5 @@
 <template>
-
 <div class="wrapper">
-
   <div class="container">
     <div class="message">
       <h1>INTO THE WILD</h1>
