@@ -1,7 +1,7 @@
 <template>
   <div class="box" v-for="question in Questions">
-      <h4 class="title">{{ question.id }}</h4>
-      <p class="text">ここにテキストが入る</p>
+      <h4 class="title">{{ question.title }}</h4>
+      <p class="text">{{ question.text }}</p>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
 .box{
     width: 30%;
     height: 30vh;
+    margin: 10px;
     border-radius: 20px;
     background-color: antiquewhite;
 }

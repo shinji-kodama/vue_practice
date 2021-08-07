@@ -1,7 +1,9 @@
 <template>
   <div>
     <List :ListTitle="title" :ListText="lists" />
-    <Card Questions="questions" />
+    <div class="box">
+    <Card :Questions="questions" />
+    </div>
   </div>
 </template>
 
@@ -38,5 +40,9 @@ export default {
 <style scoped>
 h1 {
   color: #42b983;
+}
+
+.box{
+  display: flex;
 }
 </style>
