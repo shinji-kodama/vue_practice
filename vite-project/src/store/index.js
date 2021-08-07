@@ -89,9 +89,19 @@ const store = createStore({
     changeHoge(state, changeText) {
       state.hoge = changeText
     },
-  }
+  },
   // actions: {},
-  // getters: {},
+  getters: {
+    selectAll: state =>{
+      return state.images.filter(image => image.category != '')
+    },
+    selectJimmy: state =>{
+      return state.images.filter(image => image.category == 'Jimmy')
+    },
+    selectRenan: state =>{
+      return state.images.filter(image => image.category == 'Renan')
+    }
+  },
   // modules: {},
 })
 

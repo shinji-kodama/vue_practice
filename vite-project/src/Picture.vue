@@ -13,18 +13,10 @@
     </div>
   <div class="container">
       <ul class="category-list">
-          <li v-for="(image, index) in images">
+          <li v-for="(image, index) in filterByCategory">
               <img :src="image.src" alt="">
           </li>
       </ul>
-        <!-- <div v-for="pic in picsInfo"> -->
-          <!-- <div class="image-container">
-              <img src="./assets/topmain.jpeg" alt=""> -->
-              <!-- <img :src="pic.img" alt=""> -->
-          <!-- </div>
-          <p>{{ pic.title }}</p>
-          <p>{{ pic.text }}</p> -->
-        <!-- </div> -->
   </div>
 </div>
 </template>
@@ -39,74 +31,11 @@ export default {
   data() {
     return {
     category:'',
-    images:[
-        {
-            index:1,
-            src:'../public/jimmy_01.jpeg',
-            category:'Jimmy'
-
-        },
-        {
-            index:2,
-            src:'../public/jimmy_02.jpeg',
-            category:'Jimmy'
-
-        },
-        {
-            index:3,
-            src:'../public/jimmy_03.jpeg',
-            category:'Jimmy'
-
-        },
-        {
-            index:4,
-            src:'../public/jimmy_04.jpeg',
-            category:'Jimmy'
-
-        },
-        {
-            index:5,
-            src:'../public/jimmy_05.jpeg',
-            category:'Jimmy'
-
-        },
-        {
-            index:6,
-            src:'../public/renan_01.jpeg',
-            category:'Renan'
-
-        },
-        {
-            index:7,
-            src:'../public/renan_02.jpeg',
-            category:'Renan'
-
-        },
-        {
-            index:8,
-            src:'../public/renan_03.jpeg',
-            category:'Renan'
-
-        },
-        {
-            index:9,
-            src:'../public/renan_04.jpeg',
-            category:'Renan'
-
-        },
-        {
-            index:10,
-            src:'../public/renan_05.jpeg',
-            category:'Renan'
-
-        },
-    ], 
-    text: "hogehoge",
-    inputText:'',
     };
   },
   computed: {
-    ...mapState(["picsInfo",'images']),
+    ...mapState(['images']),
+    //storeからimagesを取得してcomputedで操作
     filterByCategory(){
         return this.images.filter( (image) => !image.category.indexOf(this.category))
     }
