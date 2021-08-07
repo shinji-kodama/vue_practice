@@ -1,24 +1,54 @@
 <template>
-  {{ picsInfo }}
-  <h1>{{ hoge }}</h1>
-  <input type="text" v-model="inputText" />
-  <button @click="change">change</button>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+
+<div class="wrapper">
+
+  <div class="container">
+    <div class="message">
+      <h1>INTO THE WILD</h1>
+    </div>
+  </div>
+
+  <div class="message-wrapper">
+
+    <div class="message-container">
+      <div class="title">
+        <h2>hogehoge</h2>
+      </div>
+      <div class="text">
+        <p>hogehoge</p>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="title">
+        <h2>hogehoge</h2>
+      </div>
+      <div class="text">
+        <p>hogehoge</p>
+      </div>
+    </div>
+
+    <div class="message-container">
+      <div class="title">
+        <h2>hogehoge</h2>
+      </div>
+      <div class="text">
+        <p>hogehoge</p>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import HelloWorld from "./components/HelloWorld.vue";
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
 
 
 export default {
   components: {
-    HelloWorld,
-    Header,
-    Footer
   },
   data() {
     return {
@@ -38,13 +68,36 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+
+.container {
+    background-image: url(./assets/topmain.jpeg);
+    height: 102.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.message-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-container {
+    height: 33%;
+}
+
+.message {
+  font-size: 3rem;
+  color:#ff1c8e
+}
+
+.title {
+    font-size: 2rem;
+    color: #42b983;
+}
+
+
 </style>
