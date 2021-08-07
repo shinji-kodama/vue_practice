@@ -1,6 +1,5 @@
 <template>
   <div>
-    <List :ListTitle="title" :ListText="lists" />
     <div class="box">
     <Card :Questions="questions" />
     </div>
@@ -20,15 +19,6 @@ export default {
   },
   data() {
     return {
-      title: "ファンレター送付の方法",
-      lists: [
-        {
-          text: "基本discordに住んでいるのでそこで直接メッセ",
-        },
-        {
-          text: "slackのDM",
-        },
-      ],
     };
   },
   computed: {
@@ -44,5 +34,6 @@ h1 {
 
 .box{
   display: flex;
+  flex-wrap: wrap;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="box" v-for="question in Questions">
       <h4 class="title">{{ question.title }}</h4>
+      <p class="mark">{{ question.guest }}</p>
       <p class="text">{{ question.text }}</p>
   </div>
 </template>
@@ -27,7 +28,16 @@ export default {
 }
 
 .title{
-    padding: 20px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.mark{
+  text-align: center;
+  border-radius: 20px;
+  margin: 0 20px;
+  background-color: #41b983;
+  color: white;
 }
 
 .text{
