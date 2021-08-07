@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="box">
-    <Card :Questions="questions" />
+    <Card :Questions="filterdGuests(getName)" />
     </div>
   </div>
 </template>
@@ -23,6 +23,15 @@ export default {
   },
   computed: {
       ...mapState(["questions"]),
+      ...mapState(["guestName"]),
+
+      filterdGuests(){
+          return this.$store.getters.filterdGuests;
+      },
+
+      getName(){
+        return this.$store.state.guestName;
+      }
   },
 };
 </script>

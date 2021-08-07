@@ -36,16 +36,26 @@ const store = createStore({
       {
         id: 6,
         title: "人生を変える早起きの法則",
-        text: "ゲストにイマムをお呼びします！",
+        text: "ゲストにイマムさんをお呼びします！",
         guest: "イマムさん",
       },
     ],
+    guestName: "",
   },
-  mutations: {},
+  mutations: {
+    selectGuest(state, name){
+      state.guestName = name;
+      console.log(state.guestName)
+    }
+  },
   // actions: {},
   getters: {
-    duplicateNameRemove: state => {
-      return state.questions.from(new Set(state.questions));
+    guestNames: state => {
+      const guestArray = state.questions.map(el => el.guest);
+      return  new Set(guestArray);
+    },
+    filterdGuests: (state) => (guestName) => {
+      return state.questions.filter(el => (guestName == "") ? el : el.guest == guestName);
     }
   },
   // modules: {},

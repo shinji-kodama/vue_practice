@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 import List from "./components/List.vue";
 
 export default {
@@ -34,15 +33,6 @@ export default {
               }
           ]
       }
-  },
-  computed: {
-    ...mapState(["hoge"]),
-  },
-  methods: {
-    ...mapMutations(["changeHoge"]),
-    change() {
-      this.changeHoge(this.inputText);
-    },
   },
 };
 </script>

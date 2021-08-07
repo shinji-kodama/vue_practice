@@ -8,8 +8,8 @@
     <li class="item"><button @click="showInput()">イベントを検索する</button></li>
     <li class="item" v-if="isShow"></li>
     <li class="item" v-else>
-      <ul v-for="question in questions">
-        <a href="/">{{ question.guest }}</a>
+      <ul v-for="guestName in guestNames">
+        <li @click="sendStore(guestName)" class="filter">{{ guestName }}</li>
       </ul>
     </li>
   </ul>
@@ -30,10 +30,16 @@ export default {
   },
   computed: {
       ...mapState(["questions"]),
+      guestNames(){
+        return this.$store.getters.guestNames;
+      }
   },
   methods: {
     showInput () {
       this.isShow = !this.isShow;
+    },
+    sendStore(name){
+      this.$store.commit('selectGuest', name);
     }
   },
 };
@@ -46,6 +52,17 @@ li{
 
 .item{
     margin-top: 16px;
+}
+
+.filter{
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  padding: 5px;
+}
+
+.filter:hover{
+  color: #41b983;
 }
 
 </style>
