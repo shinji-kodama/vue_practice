@@ -10,6 +10,12 @@
         <label>
             <input type="radio" v-model="category" value="Renan">Renan
         </label>
+        <label>
+            <input type="radio" v-model="category" value="Takemi">Takemi
+        </label>
+    </div>
+    <div class="search-bar">
+      <input type="text" v-model="category">
     </div>
   <div class="container">
       <ul class="category-list">
@@ -54,7 +60,7 @@ export default {
 .category-nav {
     position: absolute;
     top: 15%;
-    left: 45%;
+    left: 40%;
 }
 
 .category-nav label {
@@ -73,16 +79,49 @@ export default {
   position: absolute;
 }
 
-.category-list {
+.search-bar {
+    position: absolute;
+    top: 20%;
+    left: 45%;
+    width: 150px;
+}
+
+input[type="text"] {
+    height: 20px;
+    border-radius: 20px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    border: 2px solid #42b983;
+    color: #42b983;
+    font-weight: 600;
+}
+
+
+.category-list[data-v-6958b615] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: absolute;
+    top: 30%;
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+}
+
+/* .category-list {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+} */
+
+.category-list img[data-v-6958b615] {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
-.category-list img {
+
+/* .category-list img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
 li {
     list-style: none;
