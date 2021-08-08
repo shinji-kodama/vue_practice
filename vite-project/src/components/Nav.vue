@@ -12,14 +12,20 @@
         <li @click="sendStore(guestName)" class="filter">{{ guestName }}</li>
       </ul>
     </li>
+    <Search @input="setSearchName" />
   </ul>
   </div>
 </template>
 
 <script>
+import Search from "./Search.vue";
+
 import { mapState } from "vuex";
 
 export default {
+  components: {
+    Search,
+  },
   data() {
     return {
       isShow: true,
@@ -30,9 +36,10 @@ export default {
   },
   computed: {
       ...mapState(["questions"]),
+      
       guestNames(){
         return this.$store.getters.guestNames;
-      }
+      },
   },
   methods: {
     showInput () {
@@ -40,6 +47,9 @@ export default {
     },
     sendStore(name){
       this.$store.commit('selectGuest', name);
+    },
+    setSearchName(e){
+      this.$store.commit('selectGuest', e.target.value);
     }
   },
 };
