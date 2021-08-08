@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 
+// モジュールとして自己紹介部分を切り取り
 const moduleMsgs = {
   state: {
     msgs: [{
@@ -9,7 +10,7 @@ const moduleMsgs = {
       txt:'foo',
       indicate: true,
       intro: true,
-      img: '@/assets/keita.png'
+      img: './assets/keita.png'
     },{
       id:2,
       name:'バード',
@@ -70,7 +71,8 @@ const moduleMsgs = {
   },
 }
 
-const moduleHoge = {
+// モジュールとして切り取ったけど、mapStateが動かない・・・
+const moduleHoges = {
   state: {
     hoge: 'Hogeeeeeee',
     ahaha: 'Ahahahahaha'
@@ -82,12 +84,12 @@ const moduleHoge = {
     changeAhaha(state, changeTxt){
       state.ahaha = changeTxt
     },
-  }
+  },
 }
 
 const store = createStore({
   // state: {
-  //   hoge: 'Hogeeeeeee',
+  //   hoge: '',
   //   ahaha: 'Ahahahahaha'
   // },
   // mutations: {
@@ -100,7 +102,7 @@ const store = createStore({
   // },
   modules: {
     a: moduleMsgs,
-    b: moduleHoge
+    b: moduleHoges
   },
 })
 

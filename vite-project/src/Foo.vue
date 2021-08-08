@@ -6,7 +6,7 @@
       生き甲斐：{{ intro.hobby }} <br>
       鳴き声：{{ intro.txt }}
     </p>
-    <!-- <img v-bind:src="intro.img" alt=""> -->
+    <img :src="intro.img" alt="" />
   </div>
 </template>
 

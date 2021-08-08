@@ -29,9 +29,7 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      b: state => state.b
-    }),
+    ...mapState(["hoge"]),
     msgs(){
       return this.$store.getters.selectMsgs
     },
