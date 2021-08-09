@@ -10,7 +10,7 @@ const moduleMsgs = {
       txt:'foo',
       indicate: true,
       intro: true,
-      img: './assets/keita.png'
+      img: 'keita.png'
     },{
       id:2,
       name:'バード',
@@ -18,7 +18,7 @@ const moduleMsgs = {
       txt:'bar',
       indicate: true,
       intro: true,
-      img: '@/assets/bird.png'
+      img: 'bird.png'
     },{
       id:3,
       name:'いまむー',
@@ -26,7 +26,7 @@ const moduleMsgs = {
       txt:'hogehoge',
       indicate: true,
       intro: true,
-      img: '@/assets/imamu.png'
+      img: 'imamu.png'
     },{
       id:4,
       name:'なかたく',
@@ -34,7 +34,7 @@ const moduleMsgs = {
       txt:'hogeeeee',
       indicate: false,
       intro: true,
-      img: '@/assets/nakataku.png'
+      img: 'nakataku.png'
     },{
       id:5,
       name:'こたま',
@@ -42,7 +42,7 @@ const moduleMsgs = {
       txt:'foobar',
       indicate: false,
       intro: true,
-      img: '@/assets/kotama.jpg'
+      img: 'kotama.jpg'
     }],
   },
   mutations: {
@@ -88,18 +88,18 @@ const moduleHoges = {
 }
 
 const store = createStore({
-  // state: {
-  //   hoge: '',
-  //   ahaha: 'Ahahahahaha'
-  // },
-  // mutations: {
-  //   changeHoge(state, changeText){
-  //     state.hoge = changeText
-  //   },
-  //   changeAhaha(state, changeTxt){
-  //     state.ahaha = changeTxt
-  //   },
-  // },
+  state: {
+    hoge: '',
+    ahaha: 'Ahahahahaha'
+  },
+  mutations: {
+    changeHoge(state, changeText){
+      state.hoge = changeText
+    },
+    changeAhaha(state, changeTxt){
+      state.ahaha = changeTxt
+    },
+  },
   modules: {
     a: moduleMsgs,
     b: moduleHoges
