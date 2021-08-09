@@ -1,6 +1,10 @@
 <template>
 <div class="wrapper">
     <div class="category-nav">
+      <!-- <Button buttonTitle="All" buttonValue="" v-model="category" />
+      <Button buttonTitle="Jimmy" buttonValue="Jimmy" v-model="category" />
+      <Button buttonTitle="Renan" buttonValue="Renan" />
+      <Button buttonTitle="Takemi" buttonValue="Takemi" /> -->
         <label>
             <input type="radio" v-model="category" value="">All
         </label>
@@ -29,14 +33,19 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import Button from "./components/Button.vue";
 
 export default {
   components: {
+    Button,
 
   },
   data() {
     return {
     category:'',
+    buttonTitle:'hoge',
+    buttonValue:'hogehoge'
+
     };
   },
   computed: {

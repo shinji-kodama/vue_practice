@@ -1,0 +1,50 @@
+<template>
+<label>
+    <input type="radio" v-model="category" :value="buttonValue">{{ buttonTitle }}
+</label>
+</template>
+<script>
+
+export default {
+    name: "Button",
+    props: {
+        buttonTitle: {
+            type: String,
+            default: "",
+            },
+        buttonValue:{
+            type: String,
+            default: "",
+        },
+        buttonModel:{
+            type: String,
+            default: "",
+        },
+    },
+    mounted() {
+        console.log(this.$router);
+    },
+};
+
+
+</script>
+<style scoped>
+
+label {
+  background: #42b983;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 10px;
+  cursor: pointer;
+    border-radius: 17px
+}
+
+input[type="radio"] {
+  /* Hide radio buttonns */
+  opacity:0;
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+
+</style>
