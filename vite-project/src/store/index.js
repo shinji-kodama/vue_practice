@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+import axios from "axios";
+import { useContext } from "vue";
 
 const store = createStore({
   state: {
@@ -43,20 +45,42 @@ const store = createStore({
     guestName: "",
   },
   mutations: {
-    selectGuest(state, name){
+    // @param: 検索時に入力した値
+    // @return: guestNameに格納
+    selectGuest(state, name) {
       state.guestName = name;
-      console.log(state.guestName)
+    },
+    setMovies: function(state, movs) {
+      state.movies = movs;
+    },
+  },
+  actions: {
+    getMovies: function({commit}){
+      return axios.get
+      ("https://api.themoviedb.org/3/movie/now_playing?api_key=" + VUE_APP_TMDM_API_KEY)
+      .then(res => {
+        commit("setMovies", res.data.results)
+        console.log(res.data.results)
+      })
     }
   },
-  // actions: {},
   getters: {
-    guestNames: state => {
-      const guestArray = state.questions.map(el => el.guest);
-      return  new Set(guestArray);
+    // @param: なし
+    // @return: questions配列のguest名の重複を排除した要素を表示。
+    guestNames: (state) => {
+      const guestArray = state.questions.map((el) => el.guest);
+      return new Set(guestArray);
     },
+
+    // @param: 検索フォームに入力された値
+    // @return: questions配列の中の部分条件一致した要素を表示
     filterdGuests: (state) => (guestName) => {
-      return state.questions.filter(el => (guestName == "") ? el : el.guest == guestName);
-    }
+      return state.questions.filter((el) => !el.guest.indexOf(guestName));
+    },
+
+    showMovies(state) {
+      return state.movies.data;
+    },
   },
   // modules: {},
 });

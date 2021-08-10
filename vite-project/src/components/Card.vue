@@ -1,5 +1,5 @@
 <template>
-  <div class="box" v-for="question in Questions">
+  <div class="box" v-for="question in Questions" :key="question.id">
       <h4 class="title">{{ question.title }}</h4>
       <p class="mark">{{ question.guest }}</p>
       <p class="text">{{ question.text }}</p>

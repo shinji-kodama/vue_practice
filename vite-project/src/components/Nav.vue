@@ -1,26 +1,24 @@
 <template>
   <div class="box">
-  <ul>
-    <li class="item"><router-link to="/">ホーム</router-link></li>
-    <li class="item"><router-link to="/story">Shinji Kodamaの逸話</router-link></li>
-    <li class="item"><router-link to="/detail">得意なこと苦手なこと</router-link></li>
-    <li class="item"><router-link to="/contact">質問Box</router-link></li>
-    <li class="item"><button @click="showInput()">イベントを検索する</button></li>
-    <li class="item" v-if="isShow"></li>
-    <li class="item" v-else>
-      <ul v-for="guestName in guestNames">
-        <li @click="sendStore(guestName)" class="filter">{{ guestName }}</li>
+    <ul>
+      <li @click="unShowSearchMenu()" class="item"><router-link to="/">ホーム</router-link></li>
+      <li @click="showSearchMenu()" class="item"><router-link to="/contact">イベントを探す</router-link></li>
+      <li @click="unShowSearchMenu()" class="item"><router-link to="/story">Shinji Kodamaの逸話</router-link></li>
+      <li @click="unShowSearchMenu()" class="item"><router-link to="/detail">おすすめ映画一覧</router-link></li>
+    </ul>
+    <div v-if="isShow">
+      <Search :SelectName="selectName" @input="setSearchName" class="search" />
+      <ul v-for="guestName in guestNames" :key="guestName.id">
+          <li @click="sendStore(guestName)" class="filter">{{ guestName }}</li>
       </ul>
-    </li>
-    <Search @input="setSearchName" />
-  </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import Search from "./Search.vue";
 
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -28,11 +26,9 @@ export default {
   },
   data() {
     return {
-      isShow: true,
+      selectName: "",
+      isShow: false,
     };
-  },
-  mounted() {
-    console.log(this.$router);
   },
   computed: {
       ...mapState(["questions"]),
@@ -42,15 +38,23 @@ export default {
       },
   },
   methods: {
-    showInput () {
-      this.isShow = !this.isShow;
-    },
+    ...mapMutations(["selectGuest"]),
+
     sendStore(name){
-      this.$store.commit('selectGuest', name);
+      this.selectName = name;
+      this.selectGuest(name);
+      console.log(this.guestName)
     },
     setSearchName(e){
-      this.$store.commit('selectGuest', e.target.value);
-    }
+      this.selectGuest(e.target.value);
+    },
+    showSearchMenu(){
+      this.isShow = true;
+    },
+    unShowSearchMenu(){
+      this.isShow = false;
+    },
+
   },
 };
 </script>
@@ -62,6 +66,11 @@ li{
 
 .item{
     margin-top: 16px;
+    text-align: left;
+}
+
+.search{
+  margin-left: 40px;
 }
 
 .filter{

@@ -1,19 +1,21 @@
 <template>
     <li class="item">
       <label>絞り込み</label><br>
-      <input v-model="searchName" type="text"><br>
-      {{ searchName }}
+      <input type="text" :value="SelectName"><br>
     </li>
 </template>
 
 <script>
+
 export default {
-  data() {
-    return {
-      searchName: "",
-    };
-  },
+  props: {
+    SelectName: {
+      type: String,
+      default: "",
+    },
+  }, 
 };
+
 </script>
 <style scoped>
 
