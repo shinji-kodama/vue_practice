@@ -1,22 +1,29 @@
 <template>
-<div>
-  <router-link to="/">Top</router-link>
-  <router-link to="/Create">Create</router-link>
-</div>
+<nav>
+  <div class="nav-wrapper">
+    <ul class="hide-on-med-and-down">
+    <li><router-link to="/">Top</router-link></li>
+    <li><router-link to="/create">Create</router-link></li>
+    </ul>
+  </div>
+</nav>
 </template>
 
 <script>
 export default {
-  setup() {
+  mounted(){
+    console.log(this.$router)
+  }
 
-  },
 }
 </script>
 
 
 <style scoped>
-  div{
-    background-color: gold;
+  nav{
+    background-color: yellowgreen;
+  }
+  ul{
     text-align: center;
   }
   a{
