@@ -1,11 +1,13 @@
 <template>
 <div class="wrapper">
     <div class="category-nav">
-      <!-- <Button buttonTitle="All" buttonValue="" v-model="category" />
-      <Button buttonTitle="Jimmy" buttonValue="Jimmy" v-model="category" />
-      <Button buttonTitle="Renan" buttonValue="Renan" />
-      <Button buttonTitle="Takemi" buttonValue="Takemi" /> -->
-        <label>
+      <Button buttonTitle="All" buttonValue="" @click="category = $event.target.value" />
+      <Button v-for="editor in editors" :buttonTitle="editor.name" :buttonValue="editor.name" @click="category = $event.target.value" />
+      <!-- <Button buttonTitle="Jimmy" buttonValue="Jimmy" @click="category = $event.target.value" />
+      <Button buttonTitle="Renan" buttonValue="Renan" @click="category = $event.target.value" />
+      <Button buttonTitle="Takemi" buttonValue="Takemi" @click="category = $event.target.value" /> -->
+
+        <!-- <label>
             <input type="radio" v-model="category" value="">All
         </label>
         <label>
@@ -16,9 +18,10 @@
         </label>
         <label>
             <input type="radio" v-model="category" value="Takemi">Takemi
-        </label>
+        </label> -->
     </div>
     <div class="search-bar">
+      <!-- <SearchBar :value="category" @change="category = $event.target.value" /> -->
       <input type="text" v-model="category">
     </div>
   <div class="container">
@@ -34,11 +37,12 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import Button from "./components/Button.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 export default {
   components: {
     Button,
-
+    SearchBar,
   },
   data() {
     return {
@@ -49,7 +53,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['images']),
+    ...mapState(['images', 'editors']),
     //storeからimagesを取得してcomputedで操作
     filterByCategory(){
         return this.images.filter( (image) => !image.category.indexOf(this.category))

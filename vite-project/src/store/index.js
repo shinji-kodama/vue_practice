@@ -72,6 +72,17 @@ const store = createStore({
         },
 
     ], 
+    editors:[
+      {
+        name:'Jimmy'
+      },
+      {
+        name:'Renan'
+      },
+      {
+        name:'Takemi'
+      }
+    ],
       picsInfo:[
           {
             title:'hoge',

@@ -1,6 +1,9 @@
 <template>
 <label>
-    <input type="radio" v-model="category" :value="buttonValue">{{ buttonTitle }}
+    <input type="radio" 
+        :value="buttonValue"
+        @click="$emit('click', $event.target.value)"
+    />{{ buttonTitle }}
 </label>
 </template>
 <script>
@@ -8,6 +11,7 @@
 export default {
     name: "Button",
     props: {
+        //['value'],
         buttonTitle: {
             type: String,
             default: "",
@@ -16,10 +20,10 @@ export default {
             type: String,
             default: "",
         },
-        buttonModel:{
-            type: String,
-            default: "",
-        },
+        // buttonModel:{
+        //     type: String,
+        //     default: "",
+        // },
     },
     mounted() {
         console.log(this.$router);
