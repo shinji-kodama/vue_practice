@@ -51,7 +51,7 @@ export default {
 .profile_input_area{
   max-width: 60%;
   margin: 0 auto;
-  border: 1px solid gray;
+  border: 1px solid rgba(215, 213, 213, 0.964);
   margin-top: 10px;
   padding: 3%;
 }

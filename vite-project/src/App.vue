@@ -17,7 +17,9 @@ export default {
 
 <style>
 body{
+  margin:0 auto;
   margin-top: 0px;
+  max-width: 960px;
 }
 
 
