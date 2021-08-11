@@ -59,7 +59,7 @@ const moduleMsgs = {
     selectMsgs: state => {
       return state.msgs.filter(msg => msg.indicate)
     },
-    hiddenMsgs: state => {
+    hideMsgs: state => {
       return state.msgs.filter(msg => !msg.indicate)
     },
     selectIntro: state => {
@@ -74,8 +74,8 @@ const moduleMsgs = {
 // モジュールとして切り取ったけど、mapStateが動かない・・・
 const moduleHoges = {
   state: {
-    hoge: 'Hogeeeeeee',
-    ahaha: 'Ahahahahaha'
+    hoge: 'hogehoge',
+    ahaha: 'Abababa'
   },
   mutations: {
     changeHoge(state, changeText){
@@ -89,17 +89,17 @@ const moduleHoges = {
 
 const store = createStore({
   state: {
-    hoge: '',
+  //   hoge: 'Hogeeeeeee',
     ahaha: 'Ahahahahaha'
   },
-  mutations: {
-    changeHoge(state, changeText){
-      state.hoge = changeText
-    },
-    changeAhaha(state, changeTxt){
-      state.ahaha = changeTxt
-    },
-  },
+  // mutations: {
+  //   changeHoge(state, changeText){
+  //     state.hoge = changeText
+  //   },
+  //   changeAhaha(state, changeTxt){
+  //     state.ahaha = changeTxt
+  //   },
+  // },
   modules: {
     a: moduleMsgs,
     b: moduleHoges

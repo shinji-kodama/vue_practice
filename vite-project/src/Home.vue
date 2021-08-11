@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -30,16 +30,17 @@ export default {
   },
   computed: {
     ...mapState(["hoge"]),
+    ...mapGetters(['selectMsgs','hideMsgs']),
+
     msgs(){
-      return this.$store.getters.selectMsgs
+      return this.selectMsgs
     },
     hiddenMsgs(){
-      return this.$store.getters.hiddenMsgs
+      return this.hideMsgs
     }
   },
   methods: {
-    ...mapMutations(["changeHoge"]),
-    ...mapMutations(["changeIndicate"]),
+    ...mapMutations(["changeHoge","changeIndicate"]),
     
     change(str1, str2){
       this.changeHoge(this.inputText);

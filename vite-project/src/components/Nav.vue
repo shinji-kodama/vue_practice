@@ -4,6 +4,8 @@
     <router-link v-for="msg in msgs" :key="msg.id" to="/foo" v-on:click="passId(msg.id)">{{ msg.name }}</router-link>
     <router-link to="/foo">foo</router-link>
     <router-link to="/aha">aha</router-link>
+    <router-link to="/page">Page</router-link>
+    <router-link to="/page2">Page2</router-link>
   </div>
 </template>
 

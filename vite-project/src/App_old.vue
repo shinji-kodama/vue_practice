@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import HelloVue from "./components/HelloVue.vue";
-import H2 from "./components/H2.vue";
-import P from "./components/P.vue";
+import HelloWorld from "./components/old/HelloWorld.vue";
+import HelloVue from "./components/old/HelloVue.vue";
+import H2 from "./components/old/H2.vue";
+import P from "./components/old/P.vue";
 
 export default {
   components: {
