@@ -1,6 +1,5 @@
 import { createStore } from "vuex";
 import axios from "axios";
-import { useContext } from "vue";
 
 const store = createStore({
   state: {
@@ -58,10 +57,7 @@ const store = createStore({
     getMovies: function({commit}){
       return axios.get
       ("https://api.themoviedb.org/3/movie/now_playing?api_key=" + VUE_APP_TMDM_API_KEY)
-      .then(res => {
-        commit("setMovies", res.data.results)
-        console.log(res.data.results)
-      })
+      .then(res => { commit("setMovies", res.data.results) })
     }
   },
   getters: {
