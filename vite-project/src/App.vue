@@ -32,6 +32,19 @@ export default {
       this.text = Number(this.text - 1);
     }
   },
+  mounted(){
+    var firebaseConfig = {
+        apiKey: "AIzaSyApIYJ-VOv5OIIgCorF5OrJngewgn85LQU",
+        authDomain: "gslab11-aa564.firebaseapp.com",
+        databaseURL: "https://gslab11-aa564-default-rtdb.firebaseio.com",
+        projectId: "gslab11-aa564",
+        storageBucket: "gslab11-aa564.appspot.com",
+        messagingSenderId: "209017578737",
+        appId: "1:209017578737:web:52d13f0f23763807a57550"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  }
 }
 </script>
 
