@@ -8,8 +8,8 @@
 <script>
 import Card from './components/Card.vue';
 import PageNationBar from "./components/PageNationBar.vue";
-import { mapState } from "vuex";
-import { toRefs, reactive, computed } from 'vue'
+import { mapState, mapMutations } from "vuex";
+import { toRefs, reactive} from 'vue'
 
 export default {
   components: {
@@ -29,16 +29,19 @@ export default {
     return {
       datas,
       onPageChange,
-      ...toRefs(datas)
+      ...toRefs(datas),
+      ...mapMutations(["createProfileData"]),
+      ...mapState(["profiles"]),
     }
   },
-
   computed: {
-    ...mapState(["profiles"]),
     profileArrays(){
       return  this.profiles.slice((this.datas.page - 1) * this.datas.perPage, this.datas.page * this.datas.perPage)
     }
-  }
+  },
+  // created: {
+  //   createProfileData()
+  // }
 }
 </script>
 

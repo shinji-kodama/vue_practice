@@ -1,126 +1,59 @@
 import { createStore } from 'vuex'
+import firebase from 'firebase'
+import 'firebase/firestore';
 
 
 const store = createStore({
   state: {
-    idNumber:0,
     profile: {
-      id:Number,
       name: String,
       comment:String,
     },
-    profiles: [
-      {
-        id:1,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:2,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:3,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:4,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:5,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:6,
-        name: "apopopas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:7,
-        name: "apsssssas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:9,
-        name: "apsssssas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:10,
-        name: "apsssssas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:11,
-        name: "asauuusas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:12,
-        name: "nnnnasasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:13,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:14,
-        name: "asassssas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:15,
-        name: "asasas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:16,
-        name: "bbbbbbbbapopopas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:17,
-        name: "apssshihsihissas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:19,
-        name: "apsssuuuuuuuussas",
-        comment:"xxxxxxx",
-      },
-      {
-        id:20,
-        name: "apsssssas",
-        comment:"xxxxxxx",
-      },
-    ],
+    profiles: [],
+    db: firebase.firestore(),
+    dbName : "test",
   },
   mutations: {
     addProfiles(state, { subTitleValue1, subTitleValue2 }) {
-      console.log(subTitleValue1, subTitleValue2)
       state.profile = {
-        idNumber : state.idNumber,
         name     : subTitleValue1,
         comment  : subTitleValue2
       }
-      state.profiles.push(state.profile)
-      state.idNumber += 1
-      state.profile =  {
-        id:Number,
-        name: String,
-        comment:String,
-      }
-      console.log(state.profiles)
+      state.db.collection(state.dbName).add(state.profile)
+        .then(() => {
+          state.profiles.push(state.profile)
+          state.idNumber += 1
+          state.profile =  {
+            name: String,
+            comment:String,
+          }
+        }).catch((e) => {
+           alert(e)
+        })
     },
   },
-  // actions: {},
+  actions: {
+     createProfileData() {
+        console.log("ok")
+        state.db.collection(state.dbName).onSnapshot((querySnapshot) => {
+          querySnapshot.docChanges().forEach((doc) => {
+            if (doc.type == 'added' || doc.type == 'modified') {
+              const profileID = doc.doc.id
+              const profileData= doc.doc.data()
+              const profile = {
+                id: profileID,
+                name: profileData.name,
+                comment: profileData.comment,
+              }
+              state.profiles.push(profile)
+            } else if (doc.type == 'removed') {
+              const idx = state.profiles.findIndex(profile => profile.id === doc.doc.data().id)
+              state.profiles.splice(idx, 1)
+            }
+          })
+        })
+      },
+  },
   getters: {
     showProfiles : (state) => {
       console.log(state.profiles)
